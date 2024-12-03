@@ -37,11 +37,15 @@ class Gemini {
       history: [
         {
           role: 'user',
-          parts: [{ text: 'Use less then five words to summarize the message' }]
+          parts: [{ text: 'Summarize the following message in less than five words.' }]
+        },
+        {
+          role: 'user',
+          parts: [{ text: `Message: ${message}` }]
         }
       ]
     });
-    const result = await chat.sendMessage(`${message}. Summary: `);
+    const result = await chat.sendMessage('Summary:');
     const response = await result.response;
     const text = response.text();
     return text || 'Unknown';
