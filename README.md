@@ -28,7 +28,7 @@ Example: `pm2 restart auth`
 Endpoints:
 `http://localhost` - frontend
 
-###Technologies Used
+### Technologies Used
 
 - **Node.js** & **Express**: Used for the backend to create a scalable, efficient, and easy-to-maintain server. Express provides a flexible framework for handling API requests and middleware.
 - **MongoDB**: A NoSQL database chosen for its flexibility and scalability, allowing seamless integration with the backend.
