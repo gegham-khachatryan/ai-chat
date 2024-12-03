@@ -15,9 +15,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "start:dev": "bash ./scripts/start-pm2.sh",
-    "stop:dev": "bash ./scripts/stop-pm2.sh",
-    "start:prod": "bash ./scripts/start-pm2.prod.sh",
-    "stop:prod": "bash ./scripts/stop-pm2.prod.sh"
+    "stop:dev": "bash ./scripts/stop-pm2.sh"
   },
   "devDependencies": {
     "typescript": "5.2.2",

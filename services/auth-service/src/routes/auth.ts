@@ -1,7 +1,8 @@
-import { Router, Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { User, IUser } from '@ai-chat/mongo';
+import { Router, Request, Response } from 'express';
+import { JWT_SECRET } from './../configs';
 
 const router = Router();
 
@@ -20,7 +21,7 @@ router.post('/register', async (req: Request, res: Response) => {
 
     await newUser.save();
 
-    const token = jwt.sign({ userId: newUser._id, username }, process.env.JWT_SECRET as string, {
+    const token = jwt.sign({ userId: newUser._id, username }, JWT_SECRET, {
       expiresIn: '7d'
     });
 
@@ -41,7 +42,7 @@ router.post('/login', async (req: Request, res: Response) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
 
-    const token = jwt.sign({ userId: user._id, username }, process.env.JWT_SECRET as string, {
+    const token = jwt.sign({ userId: user._id, username }, JWT_SECRET, {
       expiresIn: '7d'
     });
 
