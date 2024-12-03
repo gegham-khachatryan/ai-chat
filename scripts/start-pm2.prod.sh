@@ -7,7 +7,7 @@ fi
 
 docker-compose up -d
 
-LIB_NAMES=$(npx lerna list --all --parseable --toposort --long | grep libs | sed -E "s/[^:]+:([^:]+).+/\1/" | paste -d , -s -)
+LIB_NAMES=$(npx lerna list --all --parseable --toposort --long | sed -E "s/[^:]+:([^:]+).+/\1/" | paste -d , -s -)
 
 # build libs
 npx lerna run --sort --scope={$LIB_NAMES} build
