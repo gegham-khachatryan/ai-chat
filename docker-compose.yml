@@ -1,0 +1,32 @@
+version: '2.4'
+
+services:
+  nginx:
+    hostname: ai-chat-nginx
+    container_name: ai-chat-nginx
+    image: nginx:latest
+    restart: on-failure
+    volumes:
+      - ./scripts/nginx.conf:/etc/nginx/conf.d/node.template
+    ports:
+      - '80:80'
+    command: 'bash -c "cat /etc/nginx/conf.d/node.template > /etc/nginx/conf.d/default.conf && nginx -g ''daemon off;''"'
+
+  mongo:
+    container_name: ai-chat-mongo
+    hostname: ai-chat-mongo
+    image: mongo:8.0.0
+    restart: on-failure
+    ports:
+      - 27017-27020:27017-27020
+      - 30000:30000
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+      - MONGO_INITDB_DATABASE=ai-chat
+    volumes:
+      - ai-chat-mongo-data:/data/db
+
+volumes:
+  ai-chat-mongo-data:
+  ai-chat-mongocryptd-data:

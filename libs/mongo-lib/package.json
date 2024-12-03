@@ -1,0 +1,16 @@
+{
+  "name": "@ai-chat/mongo",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --build --force"
+  },
+  "devDependencies": {
+    "typescript": "5.2.2"
+  },
+  "dependencies": {
+    "@ai-chat/ai": "^1.0.0",
+    "mongoose": "^8.8.3"
+  }
+}

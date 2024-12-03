@@ -1,0 +1,7 @@
+{
+  "packages": ["services/*", "libs/*", "clients/*"],
+  "version": "1.0.0",
+  "npmClient": "npm",
+  "useWorkspaces": true,
+  "hoist": true
+}
