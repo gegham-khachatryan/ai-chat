@@ -7,8 +7,9 @@ import rehypeKatex from 'rehype-katex';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-import 'github-markdown-css/github-markdown.css';
+import '@/assets/markdown.css';
 import 'katex/dist/katex.min.css';
+import { useColorMode } from '../ui';
 
 interface MessageItemProps {
   role?: string;
@@ -17,12 +18,14 @@ interface MessageItemProps {
 
 const baseProps: Record<string, any> = {
   PreTag: 'div',
-  style: { oneDark },
+  style: oneDark,
   codeTagProps: { customStyle: { background: 'none' } },
   customStyle: { background: 'none', margin: 0, padding: 0 }
 };
 
 const MessageItem = ({ text, role }: MessageItemProps) => {
+  const { colorMode } = useColorMode();
+
   return (
     <Flex direction='column' gap='3' w='full' mx='auto' maxW='4xl'>
       {role === 'user' ? (
@@ -30,7 +33,7 @@ const MessageItem = ({ text, role }: MessageItemProps) => {
           {text}
         </Box>
       ) : (
-        <Box className='markdown-body'>
+        <Box className='markdown-body' data-theme={colorMode}>
           <Markdown
             children={text}
             remarkPlugins={[remarkGfm, remarkMath]}

@@ -20,7 +20,20 @@ const ConversationMessages = () => {
   }, [messages, handleScroll]);
 
   return (
-    <Flex flex='1' flexDirection='column' alignItems='stretch' gap='10' overflow='auto' py='20' minH='0'>
+    <Flex
+      px='4'
+      py='20'
+      gap='10'
+      flex='1'
+      minH='0'
+      overflow='auto'
+      flexDirection='column'
+      css={{
+        '&::-webkit-scrollbar': { w: '2' },
+        '&::-webkit-scrollbar-track': { w: '6' },
+        '&::-webkit-scrollbar-thumb': { borderRadius: '10', bg: `bg.emphasized` }
+      }}
+    >
       {messages.map((message) => (
         <MessageItem key={message._id} text={message.text} role={message.role} />
       ))}
