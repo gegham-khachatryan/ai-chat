@@ -1,4 +1,3 @@
-
 {
   "name": "@ai-chat/monorepo",
   "version": "1.0.0",
@@ -16,7 +15,9 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "start:pm2": "bash ./scripts/start-pm2.sh",
-    "stop:pm2": "bash ./scripts/stop-pm2.sh"
+    "stop:pm2": "bash ./scripts/stop-pm2.sh",
+    "start": "bash ./scripts/start-pm2.prod.sh",
+    "stop": "bash ./scripts/stop-pm2.prod.sh"
   },
   "devDependencies": {
     "typescript": "5.2.2",
