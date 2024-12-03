@@ -4,8 +4,8 @@ import { GeminiRoleMap, IHistoryMessage } from './types';
 class Gemini {
   model: GenerativeModel;
 
-  constructor() {
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_KEY_API_KEY as string);
+  constructor(apiKey: string) {
+    const genAI = new GoogleGenerativeAI(apiKey as string);
     this.model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
   }
 

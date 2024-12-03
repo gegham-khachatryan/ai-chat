@@ -3,11 +3,9 @@
   NPM_CONFIG_SHELL: /bin/bash
   NPM_CONFIG_SCRIPT_SHELL: /bin/bash
   HTTP_HOST: 127.0.0.1
-  NODE_ENV: development
+  NODE_ENV: production
 
   CORS_ORIGIN: '*'
-
-  MONGO_URI: mongodb://localhost:27017/ai-chat-app
 
   FRONTEND_DOMAIN: localhost
   FRONTEND_PROTOCOL: http
@@ -24,24 +22,22 @@
     followSymlinks: true
   env:
     <<: *envs
-
 apps:
   - name: app
     <<: *common
     watch: false
     namespace: frontend
     cwd: ./clients/web-app
+    env_file: ./clients/web-app/.env
     env:
       <<: *envs
       PORT: 3000
-      # REACT_APP_API_BASE_URL: http://localhost
-      # REACT_APP_API_PREFIX: /v0/api
-      # REACT_APP_AUTH_PREFIX: /v0/auth
 
   - name: api
     <<: *common
     namespace: backend
     cwd: ./services/api-service
+    env_file: ./services/api-service/.env
     env:
       <<: *envs
       PORT: 3001
@@ -51,6 +47,7 @@ apps:
     <<: *common
     namespace: backend
     cwd: ./services/auth-service
+    env_file: ./services/auth-service/.env
     env:
       <<: *envs
       PORT: 3002

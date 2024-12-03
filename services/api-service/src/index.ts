@@ -1,9 +1,8 @@
+import 'dotenv/config';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import express from 'express';
 import { connectToMongoDB } from '@ai-chat/mongo';
 import api from './api';
-dotenv.config();
 
 const app = express();
 

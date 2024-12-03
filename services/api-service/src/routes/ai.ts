@@ -1,9 +1,15 @@
+import { GEMINI_API_KEY, OPENAI_API_KEY, OPENAI_ORG_ID } from './../configs';
 import { Router, Request, Response } from 'express';
-import { getAIResponse, getMessageSummary, MessageRole } from '@ai-chat/ai';
+import { AiAssist, MessageRole } from '@ai-chat/ai';
 import { authMiddleware } from '@ai-chat/auth';
 import { Conversation, Message } from '@ai-chat/mongo';
 
 const router = Router();
+const AiAssistant = new AiAssist({
+  GEMINI_API_KEY,
+  OPENAI_API_KEY,
+  OPENAI_ORG_ID
+});
 
 router.post('/respond', authMiddleware, async (req: Request, res: Response) => {
   const { conversationId, text } = req.body;
@@ -24,7 +30,7 @@ router.post('/respond', authMiddleware, async (req: Request, res: Response) => {
     const { aiProvider, title } = conversation.toJSON();
 
     if (!title) {
-      const title = await getMessageSummary(aiProvider, text);
+      const title = await AiAssistant.getMessageSummary(aiProvider, text);
       await Conversation.findOneAndUpdate({ _id: conversationId }, { $set: { title } }, { new: true, runValidators: true });
     }
 
@@ -42,7 +48,7 @@ router.post('/respond', authMiddleware, async (req: Request, res: Response) => {
     res.setHeader('Connection', 'keep-alive');
     const messageText = lastMessage?.text || text;
 
-    const aiResponse = await getAIResponse(
+    const aiResponse = await AiAssistant.getAIResponse(
       aiProvider,
       messageText,
       contextHistory,

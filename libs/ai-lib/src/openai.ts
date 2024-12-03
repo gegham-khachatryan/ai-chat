@@ -5,8 +5,8 @@ import { IHistoryMessage, OpenAiRoleMap } from './types';
 class OpenAI {
   model: ChatGpt;
 
-  constructor() {
-    this.model = new ChatGpt({ apiKey: process.env.OPENAI_API_KEY, organization: process.env.OPENAI_ORG_ID });
+  constructor(apiKey: string, organization: string) {
+    this.model = new ChatGpt({ apiKey, organization });
   }
 
   async sendMessage(
