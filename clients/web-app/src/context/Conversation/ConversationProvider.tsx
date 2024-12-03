@@ -14,7 +14,7 @@ const ConversationProvider = ({ children }: PropsWithChildren) => {
   const { conversations, updateConversation } = useConversationsContext();
   const [messages, setMessages] = useState<Message[]>([]);
   const [respondMessage, setRespondMessage] = useState<Message | null>(null);
-  const [params, setParams] = useState({ page: 0, limit: 20 });
+  const [params] = useState({ page: 0, limit: 20 });
 
   const fetchMessages = useCallback(async () => {
     if (!conversationId) return;

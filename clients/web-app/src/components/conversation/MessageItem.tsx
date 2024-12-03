@@ -15,6 +15,13 @@ interface MessageItemProps {
   text: string;
 }
 
+const baseProps: Record<string, any> = {
+  PreTag: 'div',
+  style: { oneDark },
+  codeTagProps: { customStyle: { background: 'none' } },
+  customStyle: { background: 'none', margin: 0, padding: 0 }
+};
+
 const MessageItem = ({ text, role }: MessageItemProps) => {
   return (
     <Flex direction='column' gap='3' w='full' mx='auto' maxW='4xl'>
@@ -32,14 +39,7 @@ const MessageItem = ({ text, role }: MessageItemProps) => {
               code({ node, className, children, ...props }) {
                 const match = /language-(\w+)/.exec(className || '');
                 return match ? (
-                  <SyntaxHighlighter
-                    PreTag='div'
-                    style={oneDark}
-                    language={match[1]}
-                    codeTagProps={{ customStyle: { background: 'none' } }}
-                    customStyle={{ background: 'none', margin: 0, padding: 0 }}
-                    {...props}
-                  >
+                  <SyntaxHighlighter language={match[1]} {...baseProps}>
                     {String(children).replace(/\n$/, '')}
                   </SyntaxHighlighter>
                 ) : (

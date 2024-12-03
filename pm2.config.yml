@@ -31,7 +31,7 @@ apps:
     env_file: ./clients/web-app/.env
     env:
       <<: *envs
-      PORT: 3000
+      PORT: 3100
 
   - name: api
     <<: *common
@@ -40,7 +40,7 @@ apps:
     env_file: ./services/api-service/.env
     env:
       <<: *envs
-      PORT: 3001
+      PORT: 3101
       API_PREFIX: /v0/api
 
   - name: auth
@@ -50,5 +50,5 @@ apps:
     env_file: ./services/auth-service/.env
     env:
       <<: *envs
-      PORT: 3002
+      PORT: 3102
       API_PREFIX: /v0/auth

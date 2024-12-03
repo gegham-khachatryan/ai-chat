@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
-import { LuListMinus, LuStopCircle } from 'react-icons/lu';
 import { useState, KeyboardEvent } from 'react';
+import { LuListMinus, LuStopCircle } from 'react-icons/lu';
 import { AIProvider, AIProviders } from '@/configs/aiProviders';
 import { Flex, Textarea, Box, IconButton } from '@chakra-ui/react';
 
@@ -39,6 +39,7 @@ const MessageForm = ({ isWaiting, initialProvider, onSubmit, onAbort }: MessageF
       <Textarea
         p='4'
         rows={3}
+        autoFocus
         resize='none'
         bg='bg.muted'
         rounded='3xl'
