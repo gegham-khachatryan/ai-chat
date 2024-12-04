@@ -20,7 +20,7 @@ const baseProps: Record<string, any> = {
   PreTag: 'div',
   style: oneDark,
   codeTagProps: { customStyle: { background: 'none' } },
-  customStyle: { background: 'none', margin: 0, padding: 0 }
+  customStyle: { background: 'none', margin: 0, padding: 0, overflow: 'visible' }
 };
 
 const MessageItem = ({ text, role }: MessageItemProps) => {

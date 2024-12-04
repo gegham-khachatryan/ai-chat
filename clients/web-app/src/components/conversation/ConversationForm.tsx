@@ -5,6 +5,7 @@ import { toaster } from '../ui';
 import { useConversationContext } from '@/context/Conversation';
 import { useCallback, useEffect } from 'react';
 import { AIProvider } from '@/configs/aiProviders';
+import { Box } from '@chakra-ui/react';
 
 const ConversationForm = () => {
   const { conversationId } = useParams();
@@ -36,13 +37,15 @@ const ConversationForm = () => {
   }, [state, createMessage, navigate]);
 
   return (
-    <MessageForm
-      key={conversation?._id}
-      isWaiting={!!respondMessage}
-      initialProvider={conversation?.aiProvider}
-      onAbort={onAbort}
-      onSubmit={createMessage}
-    />
+    <Box px='4'>
+      <MessageForm
+        key={conversation?._id}
+        isWaiting={!!respondMessage}
+        initialProvider={conversation?.aiProvider}
+        onAbort={onAbort}
+        onSubmit={createMessage}
+      />
+    </Box>
   );
 };
 

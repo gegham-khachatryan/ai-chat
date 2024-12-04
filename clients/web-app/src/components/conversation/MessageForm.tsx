@@ -39,7 +39,6 @@ const MessageForm = ({ isWaiting, initialProvider, onSubmit, onAbort }: MessageF
       <Textarea
         p='4'
         rows={3}
-        autoFocus
         resize='none'
         bg='bg.muted'
         rounded='3xl'

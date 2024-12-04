@@ -473,6 +473,16 @@
   font-size: 12px;
   word-wrap: normal;
 }
+.markdown-body *::-webkit-scrollbar {
+  width: 8px;
+}
+.markdown-body *::-webkit-scrollbar-track {
+  width: 10px;
+}
+.markdown-body *::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: var(--chakra-colors-bg-muted);
+}
 
 .markdown-body .octicon {
   display: inline-block;

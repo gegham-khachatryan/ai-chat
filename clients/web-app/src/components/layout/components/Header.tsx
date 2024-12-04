@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
 import { Box, Flex, IconButton } from '@chakra-ui/react';
+import { LuFileEdit, LuLogOut, LuPanelLeft } from 'react-icons/lu';
 import { useAuthContext } from '@/context/Auth';
 import { ColorModeButton } from '@/components/ui';
-import { LuFileEdit, LuLogOut } from 'react-icons/lu';
+import { useLayoutContext } from '@/context/Layout';
 
 export const Header = () => {
   const { isAuthenticated, logout } = useAuthContext();
+  const { toggleSidebar, closeSidebar } = useLayoutContext();
+
   return (
     <Flex
       px='4'
@@ -21,10 +24,14 @@ export const Header = () => {
       gradientTo='transparent'
       position='absolute'
       zIndex='docked'
+      bgSize='100% 160%'
     >
       {isAuthenticated ? (
         <>
-          <IconButton asChild variant='ghost' mr='auto'>
+          <IconButton variant='ghost' hideFrom='lg' onClick={toggleSidebar}>
+            <LuPanelLeft />
+          </IconButton>
+          <IconButton asChild variant='ghost' mr='auto' onClick={closeSidebar}>
             <Link to='/new'>
               <LuFileEdit />
             </Link>

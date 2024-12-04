@@ -20,7 +20,7 @@ const NewConversation = () => {
   };
 
   return (
-    <Flex w='full' flexDirection='column' gap='4' my='auto' alignItems='center'>
+    <Flex w='full' flexDirection='column' gap='4' px='4' my='auto' alignItems='center'>
       <Title>What can I help with?</Title>
       <MessageForm onSubmit={onSubmit} />
     </Flex>

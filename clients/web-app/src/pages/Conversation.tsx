@@ -6,7 +6,7 @@ import ConversationForm from '@/components/conversation/ConversationForm';
 const Conversation = () => {
   return (
     <ConversationProvider>
-      <Flex flex='1' flexDirection='column' pb='4' mx='auto'>
+      <Flex flex='1' flexDirection='column' pb='4' w='full' minW='0'>
         <ConversationMessages />
         <ConversationForm />
       </Flex>
